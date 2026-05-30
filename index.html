@@ -1,10 +1,278 @@
-<html lang ="en">
-  <head>
-    <meta charset ="UTF-8">
-    <meta name ="viewport" content ="width=device-width, inital scale =1.0">
-    <title> My Github Website! </title>
-  </head>
-  <body>
-    Stuff here later
-  </body>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Glow</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
+    min-height:100vh;
+}
+
+/* Animated background */
+body::before{
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.08), transparent 30%),
+        radial-gradient(circle at 80% 40%, rgba(255,255,255,.06), transparent 25%),
+        radial-gradient(circle at 50% 90%, rgba(255,255,255,.05), transparent 35%);
+    animation:moveBackground 15s infinite alternate ease-in-out;
+    z-index:-2;
+}
+
+@keyframes moveBackground{
+    from{
+        transform:translateY(-20px) scale(1);
+    }
+    to{
+        transform:translateY(20px) scale(1.1);
+    }
+}
+
+/* Floating glow balls */
+.glow{
+    position:fixed;
+    border-radius:50%;
+    background:white;
+    filter:blur(120px);
+    opacity:.15;
+    z-index:-1;
+}
+
+.glow1{
+    width:300px;
+    height:300px;
+    top:10%;
+    left:5%;
+    animation:float 10s ease-in-out infinite;
+}
+
+.glow2{
+    width:250px;
+    height:250px;
+    bottom:10%;
+    right:5%;
+    animation:float 14s ease-in-out infinite reverse;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-40px);
+    }
+}
+
+/* Navbar */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 8%;
+    backdrop-filter:blur(10px);
+}
+
+.logo{
+    font-size:1.5rem;
+    font-weight:700;
+    text-shadow:0 0 20px white;
+}
+
+nav ul{
+    display:flex;
+    gap:30px;
+    list-style:none;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+nav a:hover{
+    text-shadow:0 0 15px white;
+}
+
+/* Hero */
+.hero{
+    min-height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero-content{
+    max-width:800px;
+    animation:fadeUp 1.2s ease;
+}
+
+.hero h1{
+    font-size:5rem;
+    font-weight:700;
+    line-height:1.1;
+    text-shadow:
+        0 0 10px white,
+        0 0 25px white,
+        0 0 50px white;
+}
+
+.hero p{
+    margin-top:25px;
+    color:#cfcfcf;
+    font-size:1.2rem;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:40px;
+    padding:16px 35px;
+    border-radius:50px;
+    text-decoration:none;
+    color:black;
+    background:white;
+    font-weight:600;
+    transition:.4s;
+    box-shadow:
+        0 0 15px white,
+        0 0 40px white;
+}
+
+.btn:hover{
+    transform:translateY(-5px) scale(1.05);
+    box-shadow:
+        0 0 25px white,
+        0 0 80px white;
+}
+
+/* Cards */
+.section{
+    padding:100px 8%;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.1);
+    padding:30px;
+    border-radius:25px;
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 35px rgba(255,255,255,.2);
+}
+
+.card h3{
+    margin-bottom:15px;
+}
+
+.card p{
+    color:#cfcfcf;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:40px;
+    color:#888;
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@media(max-width:768px){
+    .hero h1{
+        font-size:3rem;
+    }
+
+    nav ul{
+        display:none;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+<nav>
+    <div class="logo">Glow.</div>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Future Design</h1>
+        <p>
+            Modern glassmorphism, smooth animations, and glowing aesthetics.
+            Built with pure HTML and CSS.
+        </p>
+        <a href="#" class="btn">Explore</a>
+    </div>
+</section>
+
+<section class="section">
+    <div class="cards">
+        <div class="card">
+            <h3>⚡ Fast</h3>
+            <p>Optimized and lightweight with smooth animations.</p>
+        </div>
+
+        <div class="card">
+            <h3>✨ Elegant</h3>
+            <p>Clean modern interface with white glow effects.</p>
+        </div>
+
+        <div class="card">
+            <h3>🚀 Modern</h3>
+            <p>Glassmorphism design inspired by futuristic websites.</p>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 Modern Glow Experience
+</footer>
+
+</body>
+</html>
